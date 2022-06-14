@@ -16,7 +16,7 @@
         </div>
 
         <div class="row">
-            <form id="generate_html">
+            <form id="generate_html" class="m-3">
 
             </form>
         </div>
@@ -731,6 +731,9 @@
         HisSpinner(false);
 
         $('#his_select').select2();
+
+        BindCommonDataV2({ "data": data_select, "select_bind": "his_select", "select_lable": "Chọn phiếu", "value_key": "_id", "text_key": "name", "sort_key": "name" });
+
     }
 
     function RegisterEvents()
@@ -747,6 +750,5 @@
     {
         InitComponent();
         RegisterEvents();
-        BindCommonDataV2({ "data": data_select, "select_bind": "his_select", "select_lable": "Chọn phiếu", "value_key": "_id", "text_key": "name", "sort_key": "name" });
     }
 </script>
