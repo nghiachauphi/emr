@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="w-100">
-        <div class="row all-center">
+        <div class="row p-0 m-0 all-center">
             <div class="col-sm-4">
-                <label>Chọn tên phiếu</label>
+                <label class="form-label">Chọn tên phiếu</label>
                 <select id="his_select" class="form-control select-2">
                     <option value="one">First</option>
                     <option value="two">Second (disabled)</option>
@@ -13,11 +13,19 @@
                     <option value="5">5</option>
                 </select>
             </div>
+            <div class="col-sm-4">
+                <label class="form-label">ID EMR</label>
+                <input class="form-control" id="id_emr_show" name="id_emr_show" readonly>
+            </div>
         </div>
 
-        <div class="row">
-            <form id="generate_html" class="m-3">
+        <div class="row p-0 m-0 all-center">
+            <form class="m-3" method="post" action="{{route('emr_list_create')}}">
+                @csrf
+                <input id="id_emr" name="id_emr" hidden>
+                <div id="generate_html" >
 
+                </div>
             </form>
         </div>
     </div>
@@ -37,14 +45,16 @@
         "json_properties": {
             "id_hs": {
                 "required": "required|max:50|unique:emr_list",
-                "show": false,
+                "show": true,
+                "name": "id_hs",
                 "description": "Mã hồ sơ",
                 "views": {
                 }
             },
             "id_bn": {
                 "required": "required",
-                "show": false,
+                "show": true,
+                "name": "id_bn",
                 "description": "Mã bệnh nhân",
                 "views": {
                 }
@@ -52,6 +62,7 @@
             "tencoso": {
                 "required": "required",
                 "show": true,
+                "name": "tencoso",
                 "description": "Tên cơ sở",
                 "views": {
                     "tags": "text",
@@ -67,6 +78,7 @@
             "tenbv": {
                 "required": "required",
                 "show": true,
+                "name": "tenbv",
                 "description": "Tên bệnh viện",
                 "views": {
                     "tags": "text",
@@ -82,6 +94,7 @@
             "khoa": {
                 "required": "required",
                 "show": true,
+                "name": "khoa",
                 "description": "Tên khoa",
                 "views": {
                     "tags": "text",
@@ -97,6 +110,7 @@
             "tenphieu": {
                 "required": "required",
                 "show": true,
+                "name": "tenphieu",
                 "description": "Tên phiếu",
                 "views": {
                     "tags": "text",
@@ -112,6 +126,7 @@
             "kinhgui": {
                 "required": "required",
                 "show": true,
+                "name": "kinhgui",
                 "description": "Kính gửi",
                 "views": {
                     "tags": "text",
@@ -127,6 +142,7 @@
             "soba": {
                 "required": "required",
                 "show": true,
+                "name": "soba",
                 "description": "Số bệnh án",
                 "views": {
                     "tags": "text",
@@ -142,6 +158,7 @@
             "hotenbn": {
                 "required": "required",
                 "show": true,
+                "name": "hotenbn",
                 "description": "Họ tên bệnh nhân",
                 "views": {
                     "tags": "text",
@@ -157,6 +174,7 @@
             "tuoi": {
                 "required": "required",
                 "show": true,
+                "name": "tuoi",
                 "description": "Tuổi",
                 "views": {
                     "tags": "text",
@@ -172,6 +190,7 @@
             "gioitinh": {
                 "required": "required",
                 "show": true,
+                "name": "gioitinh",
                 "description": "Giới tính",
                 "views": {
                     "tags": "text",
@@ -187,6 +206,7 @@
             "dantoc": {
                 "required": "required",
                 "show": true,
+                "name": "dantoc",
                 "description": "Dân tộc",
                 "views": {
                     "tags": "text",
@@ -202,6 +222,7 @@
             "sodienthoai": {
                 "required": "required",
                 "show": true,
+                "name": "sodienthoai",
                 "description": "Số điện thoại",
                 "views": {
                     "tags": "text",
@@ -217,6 +238,7 @@
             "nghenghiep": {
                 "required": "required",
                 "show": true,
+                "name": "nghenghiep",
                 "description": "Nghề nghiệp",
                 "views": {
                     "tags": "text",
@@ -232,6 +254,7 @@
             "diachi": {
                 "required": "required",
                 "show": true,
+                "name": "diachi",
                 "description": "Địa chỉ",
                 "views": {
                     "tags": "text",
@@ -247,6 +270,7 @@
             "ngaythangnam": {
                 "required": "",
                 "show": true,
+                "name": "ngaythangnam",
                 "description": "Ngày tháng năm",
                 "views": {
                     "tags": "datetime-local",
@@ -278,6 +302,7 @@
                 "key": "",
                 "required": "required",
                 "show": true,
+                "name": "image",
                 "description": "Hình ảnh",
                 "views": {
                     "tags": "",
@@ -297,6 +322,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "tencoso",
                 "description": "Tên cơ sở",
                 "views": {
                     "tags": "text",
@@ -316,6 +342,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "tenbv",
                 "description": "Mã khoa ",
                 "views": {
                     "tags": "text",
@@ -335,6 +362,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "tenphieu",
                 "description": "Tên phiếu",
                 "views": {
                     "tags": "text-center",
@@ -354,6 +382,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "idbn",
                 "description": "ID bệnh nhân",
                 "views": {
                     "tags": "text",
@@ -371,6 +400,7 @@
                 "null": false,
                 "default": "",
                 "key": "",
+                "name": "soba",
                 "required": "required|max:50",
                 "show": true,
                 "description": "Số bệnh án",
@@ -392,6 +422,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "hoten",
                 "description": "Họ tên",
                 "views": {
                     "tags": "text",
@@ -409,6 +440,7 @@
                 "null": false,
                 "default": "",
                 "key": "",
+                "name": "gioitinh",
                 "required": "required|max:50",
                 "show": true,
                 "description": "Giới tính",
@@ -428,6 +460,7 @@
                 "null": false,
                 "default": "",
                 "key": "",
+                "name": "namsinh",
                 "required": "required|max:50",
                 "show": true,
                 "description": "Năm sinh",
@@ -449,6 +482,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "diachi",
                 "description": "Địa chỉ",
                 "views": {
                     "tags": "text",
@@ -468,6 +502,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "benhnhan",
                 "description": "Là người thân bệnh nhân",
                 "views": {
                     "tags": "text",
@@ -487,6 +522,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "gioitinh2",
                 "description": "Giới tính bệnh nhân",
                 "views": {
                     "tags": "text",
@@ -506,6 +542,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "namsinh2",
                 "description": "Năm sinh bệnh nhân",
                 "views": {
                     "tags": "date",
@@ -525,6 +562,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "vaovienluc",
                 "description": "Thời gia vào viện",
                 "views": {
                     "tags": "date-time",
@@ -544,6 +582,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "khoa",
                 "description": "Mã khoa ",
                 "views": {
                     "tags": "text",
@@ -563,6 +602,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "chandoan",
                 "description": "Chẩn đoán",
                 "views": {
                     "tags": "text",
@@ -582,6 +622,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "ketqua",
                 "description": "Kết quả",
                 "views": {
                     "tags": "text",
@@ -601,6 +642,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "ravienluc",
                 "description": "Thời gian ra viện",
                 "views": {
                     "tags": "date-time",
@@ -620,6 +662,7 @@
                 "key": "",
                 "required": "required|max:50",
                 "show": true,
+                "name": "ngaythangnam",
                 "description": "Mã khoa ",
                 "views": {
                     "tags": "date",
@@ -692,17 +735,25 @@
         }
 
         //Button Submit
+        let divSubmitRow = document.createElement("div");
+        divSubmitRow.setAttribute("class","row d-flex justify-content-end mb-3");
+
         let divSubmit = document.createElement("div");
         divSubmit.setAttribute("class","col-sm-2");
 
-        let inputSubmit = document.createElement("input");
+        let inputSubmit = document.createElement("button");
         inputSubmit.setAttribute("id","btn_submit_create");
+        inputSubmit.setAttribute("type","submit");
         inputSubmit.setAttribute("class","form-control btn btn-primary");
-        inputSubmit.setAttribute("value","Lưu");
+        inputSubmit.innerText = "Lưu";
         // inputSubmit.addEventListener("click",APICreateCategory);
 
         divSubmit.appendChild(inputSubmit);
-        elementForm.appendChild(divSubmit);
+        divSubmitRow.appendChild(divSubmit);
+        elementForm.appendChild(divSubmitRow);
+
+        BindTextValue("id_emr", data, "id_emr");
+        BindTextValue("id_emr_show", data, "id_emr");
     }
 
     function GetLocation(location, get = "row")
@@ -742,6 +793,7 @@
             document.getElementById("generate_html").innerText = "";
 
             let id_obj = $('#his_select').select2('val');
+
             GenerateForm( data_tmp.get(id_obj), "generate_html");
         });
     }

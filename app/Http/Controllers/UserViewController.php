@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\View;
 
 class UserViewController extends Controller
 {
-
-
     public function postlogin(Request $request)
     {
         $response = Http::post('http://103.162.31.19:1818/api/leo/login',
@@ -34,21 +32,6 @@ class UserViewController extends Controller
     }
 
     public function index()
-    {
-        return view('user.index');
-    }
-
-    public function emr()
-    {
-        return view('emrlist.index');
-    }
-
-    public function login_local()
-    {
-        return view('/user');
-    }
-
-    public function index_local()
     {
         return view('user.index');
     }

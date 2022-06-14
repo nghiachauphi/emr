@@ -38,7 +38,8 @@ Route::get('/google_login_callback', [App\Http\Controllers\Auth\LoginController:
 Route::post('/login', [App\Http\Controllers\UserViewController::class, 'postlogin'])->name('postlogin');
 Route::get('/user', [App\Http\Controllers\UserViewController::class, 'index'])->name('user');
 
-Route::get('/emr_list', [App\Http\Controllers\UserViewController::class, 'emr'])->name('emr_list');
+Route::get('/emr_list', [App\Http\Controllers\EmrListController::class, 'index'])->name('emr_list');
+Route::post('/emr_list/create', [App\Http\Controllers\EmrListController::class, 'create'])->name('emr_list_create');
 
 
 /*

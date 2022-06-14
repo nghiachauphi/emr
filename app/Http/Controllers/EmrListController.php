@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\EmrList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Session;
 
 class EmrListController extends Controller
 {
@@ -22,9 +24,22 @@ class EmrListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        //api-12
+        $response = Http::accept('application/json;charset=utf-8')->withHeaders([
+            'Authorization' => 'Bearer '.session('token')
+        ])->post('http://103.162.31.19:1818/api/emr/'.$request->id_emr.'/create',
+            $request->all()
+        );
+
+        dd(json_decode($response->body()));
+        if ($response)
+        {
+            return view('emrlist.index');
+        }
+
+        return Response()->json(["message" => $response->body()]);
     }
 
     /**

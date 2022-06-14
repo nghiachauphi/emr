@@ -32,7 +32,7 @@
 
 </head>
 <body>
-    <div class="his-container-spinner" id="app">
+    <div class="his-container-spinner scroll-none-width" id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -104,7 +104,7 @@
             </div>
         </nav>
 
-        <main class="py-4 scroll-none-width">
+        <main class="py-4">
             @yield('content')
         </main>
     </div>
@@ -123,8 +123,6 @@
 
     function LoadPage(){
         HisSpinner(false);
-
-
     }
 
     function GetDataImage(){
@@ -146,10 +144,6 @@
                 // always executed
             });
     }
-
-
-
-
 </script>
 </html>
 
